@@ -7,6 +7,7 @@ import pygetwindow as gw
 from Clicks import *
 
 def main():
+    n = 0 # Cuevas Exploradas
     print('Iniciando . . .')
     while keyboard.is_pressed("Esc") != True:
 
@@ -66,7 +67,7 @@ def main():
                 
                 # Agrega un retraso antes de buscar la imagen nuevamente
                 time.sleep(1)
-                print('Click on Building')
+                #print('Click on Building')
             
             if pyautogui.locateOnScreen('./screenshots/ExplorerBuilding2.jpg', confidence = 0.6) != None:
                 # Obtiene las coordenadas del centro de la imagen detectada
@@ -79,7 +80,7 @@ def main():
 
                 # Agrega un retraso antes de buscar otra vez la misma imagen
                 time.sleep(1)
-                print('Click on Building')
+                #print('Click on Building')
             
             if pyautogui.locateOnScreen('./screenshots/ExplorerBuilding3.jpg', confidence = 0.6) != None:
                 # Obtiene las coordenadas del centro de la imagen detectada
@@ -92,7 +93,7 @@ def main():
 
                 # Agrega un retraso antes de buscar otra vez la misma imagen
                 time.sleep(1)
-                print('Click on Building')
+                #print('Click on Building')
             
             # Después, Detecta el botón de explorar en las opciones del edificio
             if pyautogui.locateOnScreen('./screenshots/Explore.jpg', confidence = 0.6) != None:
@@ -106,7 +107,7 @@ def main():
                 
                 # Agrega un retraso antes de buscar la imagen nuevamente
                 time.sleep(1)
-                print('Building Explore')
+                #print('Building Explore')
 
                 # Movemos el mouse al centro
                 x, y, width, height = pyautogui.locateOnScreen('./screenshots/CentroExploracion.jpg', confidence = 0.8)
@@ -198,7 +199,9 @@ def main():
                 
                 # Agrega un retraso antes de buscar la imagen nuevamente
                 time.sleep(1)
-                print('Explorer Sent')
+                n += 1
+                print(n)
+                #print('Explorer Sent')
             
             # Vuelve a tu aldea y empieza de nuevo
             if pyautogui.locateOnScreen('./screenshots/Back.jpg', confidence = 0.6) != None \

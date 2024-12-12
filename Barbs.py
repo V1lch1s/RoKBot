@@ -1,10 +1,20 @@
 import keyboard
-import pywintypes
 import pygetwindow as gw
-from Clicks import *
+from reintegrarTropas import *
+import tkinter as tk
+from tkinter import simpledialog
 
 def main():
     n = 0 # Bárbaros Masacrados
+    
+    root = tk.Tk()
+    root.withdraw() # Oculta la ventana principal
+
+    ''' Aquí se le pregunta al usuario el nivel objetivo de los bárbaros a través de
+       un cuadro de diálogo '''
+    nivel = simpledialog.askinteger("Selección de Objetivos", "¿Qué nivel de bárbaros explotamos?")
+
+
     print('Iniciando . . .')
     while keyboard.is_pressed("Esc") != True:
 
@@ -55,9 +65,13 @@ def main():
             # Vamos al mapa si las tropas están listas
             if pyautogui.locateOnScreen('./screenshots/Map.jpg', confidence = 0.8) != None \
                 and pyautogui.locateOnScreen('./screenshots/Tropas_curar.jpg', confidence = 0.8) == None \
+                and pyautogui.locateOnScreen('./screenshots/Tropas_curando.jpg', confidence = 0.8) == None \
                 and pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar.jpg', confidence = 0.8) == None \
                 and pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_2.jpg', confidence = 0.8) == None \
-                and pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_3.jpg', confidence = 0.8) == None:
+                and pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_3.jpg', confidence = 0.8) == None \
+                and pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_4.jpg', confidence = 0.8) == None \
+                and pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_5.jpg', confidence = 0.8) == None \
+                and pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_6.jpg', confidence = 0.8) == None:
 
                 # Obtiene las coordenadas del centro de la imagen detectada
                 x, y, width, height = pyautogui.locateOnScreen('./screenshots/Map.jpg', confidence = 0.8)
@@ -98,14 +112,25 @@ def main():
 
                     # Hacemos Click en los Bárbaros
                     # (Deben ser mayor a nivel 6 debido a que este es el nivel máximo de los lugares de recolección)
-                    while pyautogui.locateOnScreen('./screenshots/Barbaros_niv13.jpg', confidence = 0.9) == None \
+                    while pyautogui.locateOnScreen(f'./screenshots/Barbaros_niv{nivel}.jpg', confidence = 0.9) == None \
                         and keyboard.is_pressed("Esc") != True:
-                        print("Ciclo Barbaros_niv13")                    
-                        pass
+                        print(f"Buscando Barbaros_niv{nivel}")
 
-                    if pyautogui.locateOnScreen('./screenshots/Barbaros_niv13.jpg', confidence = 0.9) != None:
+                        if pyautogui.locateOnScreen('./screenshots/Boton_buscar.jpg', confidence = 0.8) != None:
+                            # Obtiene las coordenadas del centro de la imagen detectada
+                            x, y, width, height = pyautogui.locateOnScreen('./screenshots/Boton_buscar.jpg', confidence = 0.8)
+                            center_x = x + width // 2
+                            center_y = (y + height // 2)
+                            
+                            # Mueve el cursor hacia la imagen detectada y realiza un clic
+                            leftClick(center_x, center_y)
+                            
+                            # Agrega un retraso
+                            time.sleep(1)
+
+                    if pyautogui.locateOnScreen(f'./screenshots/Barbaros_niv{nivel}.jpg', confidence = 0.9) != None:
                         # Obtiene las coordenadas del centro de la imagen detectada
-                        x, y, width, height = pyautogui.locateOnScreen('./screenshots/Barbaros_niv13.jpg', confidence = 0.9)
+                        x, y, width, height = pyautogui.locateOnScreen(f'./screenshots/Barbaros_niv{nivel}.jpg', confidence = 0.9)
                         center_x = x + width // 2
                         center_y = (y + height // 2)
                         
@@ -251,50 +276,7 @@ def main():
                             time.sleep(1)
 
                         # Si podemos reintegrar las tropas, lo hacemos
-                        if pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar.jpg', confidence = 0.8) != None:
-                            # Obtiene las coordenadas del centro de la imagen detectada
-                            x, y, width, height = pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar.jpg', confidence = 0.8)
-                            center_x = x + width // 2
-                            center_y = (y + height // 2)
-                            
-                            # Mueve el cursor hacia la imagen detectada y realiza un clic
-                            leftClick(center_x, center_y)
-
-                            n += 1 # Para este punto ya se habrá completado 1 iteración
-                            print(n)
-                            
-                            # Agrega un retraso
-                            time.sleep(1)
-
-                        if pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_2.jpg', confidence = 0.8) != None:
-                            # Obtiene las coordenadas del centro de la imagen detectada
-                            x, y, width, height = pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_2.jpg', confidence = 0.8)
-                            center_x = x + width // 2
-                            center_y = (y + height // 2)
-                            
-                            # Mueve el cursor hacia la imagen detectada y realiza un clic
-                            leftClick(center_x, center_y)
-
-                            n += 1 # Para este punto ya se habrá completado 1 iteración
-                            print(n)
-                            
-                            # Agrega un retraso
-                            time.sleep(1)
-                            
-                        if pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_3.jpg', confidence = 0.8) != None:
-                            # Obtiene las coordenadas del centro de la imagen detectada
-                            x, y, width, height = pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_3.jpg', confidence = 0.8)
-                            center_x = x + width // 2
-                            center_y = (y + height // 2)
-                            
-                            # Mueve el cursor hacia la imagen detectada y realiza un clic
-                            leftClick(center_x, center_y)
-
-                            n += 1 # Para este punto ya se habrá completado 1 iteración
-                            print(n)
-                            
-                            # Agrega un retraso
-                            time.sleep(1)
+                        n = reintegrarTropas(n)
 
             # Curamos nuestras tropas
             if pyautogui.locateOnScreen('./screenshots/Tropas_curar.jpg', confidence = 0.8) != None:
@@ -326,8 +308,14 @@ def main():
                 while pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar.jpg', confidence = 0.8) != None \
                     or pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_2.jpg', confidence = 0.8) != None \
                     or pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_3.jpg', confidence = 0.8) != None \
+                    or pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_4.jpg', confidence = 0.8) != None \
+                    or pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_5.jpg', confidence = 0.8) != None \
+                    or pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_6.jpg', confidence = 0.8) != None \
+                    or pyautogui.locateOnScreen('./screenshots/Tropas_derrotadas.jpg', confidence = 0.8) != None \
+                    or pyautogui.locateOnScreen('./screenshots/Tropas_regresando.jpg', confidence = 0.8) != None \
                     and keyboard.is_pressed("Esc") != True:
                     
+                    print("Esperando Tropas")
                     # Se aprovecha el ciclo para detectar si hay acciones realizables dentro de la aldea
                     # Mejora disponible
                     if pyautogui.locateOnScreen('./screenshots/Mejora_disponible.jpg', confidence = 0.8) != None:
@@ -405,6 +393,9 @@ def main():
                         
                         # Agrega un retraso
                         time.sleep(1)
+                    
+                    # Reintegramos nuestras tropas si ya están listas
+                    n = reintegrarTropas(n)
 
             # Pedimos ayuda del clan
             if pyautogui.locateOnScreen('./screenshots/Ayuda.jpg', confidence = 0.8) != None:
@@ -420,50 +411,7 @@ def main():
                 time.sleep(1)
 
             # Reintegramos nuestras tropas
-            if pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar.jpg', confidence = 0.8) != None:
-                # Obtiene las coordenadas del centro de la imagen detectada
-                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar.jpg', confidence = 0.8)
-                center_x = x + width // 2
-                center_y = (y + height // 2)
-                
-                # Mueve el cursor hacia la imagen detectada y realiza un clic
-                leftClick(center_x, center_y)
-
-                n += 1 # Para este punto ya se habrá completado 1 iteración
-                print(n)
-                
-                # Agrega un retraso
-                time.sleep(1)
-
-            if pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_2.jpg', confidence = 0.8) != None:
-                # Obtiene las coordenadas del centro de la imagen detectada
-                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_2.jpg', confidence = 0.8)
-                center_x = x + width // 2
-                center_y = (y + height // 2)
-                
-                # Mueve el cursor hacia la imagen detectada y realiza un clic
-                leftClick(center_x, center_y)
-
-                n += 1 # Para este punto ya se habrá completado 1 iteración
-                print(n)
-                
-                # Agrega un retraso
-                time.sleep(1)
-                
-            if pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_3.jpg', confidence = 0.8) != None:
-                # Obtiene las coordenadas del centro de la imagen detectada
-                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_3.jpg', confidence = 0.8)
-                center_x = x + width // 2
-                center_y = (y + height // 2)
-                
-                # Mueve el cursor hacia la imagen detectada y realiza un clic
-                leftClick(center_x, center_y)
-
-                n += 1 # Para este punto ya se habrá completado 1 iteración
-                print(n)
-                
-                # Agrega un retraso
-                time.sleep(1)
+            n = reintegrarTropas(n)
 
         except TypeError or OSError or gw.PyGetWindowException:
             time.sleep(0.01)
