@@ -10,7 +10,8 @@ def reintegrarTropas(n):
         './screenshots/Tropas_reintegrar_5.jpg',
         './screenshots/Tropas_reintegrar_6.jpg',
         './screenshots/Tropas_reintegrar_7.jpg',
-        './screenshots/Tropas_reintegrar_8.jpg'
+        './screenshots/Tropas_reintegrar_8.jpg',
+        './screenshots/Tropas_reintegrar_9.jpg'
     ]
 
     for imagen in posibleTroopers:

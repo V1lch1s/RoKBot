@@ -43,9 +43,9 @@ def main():
                 time.sleep(1)
 
                 # Regresa a la aldea
-                if pyautogui.locateOnScreen('./screenshots/Back.jpg', confidence = 0.7) != None:
+                if pyautogui.locateOnScreen('./screenshots/Back.jpg', confidence = 0.8) != None:
                     # Obtiene las coordenadas del centro de la imagen detectada
-                    x, y, width, height = pyautogui.locateOnScreen('./screenshots/Back.jpg', confidence = 0.7)
+                    x, y, width, height = pyautogui.locateOnScreen('./screenshots/Back.jpg', confidence = 0.8)
                     center_x = x + width // 2
                     center_y = (y + height // 2)
                     
@@ -56,49 +56,31 @@ def main():
                     time.sleep(1)
 
             # Damos click en el Edificio de investigación
-            if pyautogui.locateOnScreen('./screenshots/ExplorerBuilding.jpg', confidence = 0.7) != None:
-                # Obtiene las coordenadas del centro de la imagen detectada
-                x, y, width, height = pyautogui.locateOnScreen('./screenshots/ExplorerBuilding.jpg', confidence = 0.7)
-                center_x = x + width // 2
-                center_y = y + height // 2
-                
-                # Mueve el mouse al centro de la imagen detectada y realiza un clic
-                leftClick(center_x, center_y)
-                
-                # Agrega un retraso antes de buscar la imagen nuevamente
-                time.sleep(1)
-                #print('Click on Building')
-            
-            if pyautogui.locateOnScreen('./screenshots/ExplorerBuilding2.jpg', confidence = 0.6) != None:
-                # Obtiene las coordenadas del centro de la imagen detectada
-                x, y, width, height = pyautogui.locateOnScreen('./screenshots/ExplorerBuilding2.jpg', confidence = 0.6)
-                center_x = x + width // 2
-                center_y = y + height // 2
+            ExplorerBuildings = [
+                './screenshots/ExplorerBuilding.jpg',
+                './screenshots/ExplorerBuilding2.jpg',
+                './screenshots/ExplorerBuilding3.jpg'
+            ] # Estas son las versiones del edificio de exploración
 
-                # Mueve el mouse al centro de la imagen detectada y realiza un clic
-                leftClick(center_x, center_y)
-
-                # Agrega un retraso antes de buscar otra vez la misma imagen
-                time.sleep(1)
-                #print('Click on Building')
-            
-            if pyautogui.locateOnScreen('./screenshots/ExplorerBuilding3.jpg', confidence = 0.6) != None:
-                # Obtiene las coordenadas del centro de la imagen detectada
-                x, y, width, height = pyautogui.locateOnScreen('./screenshots/ExplorerBuilding3.jpg', confidence = 0.6)
-                center_x = x + width // 2
-                center_y = y + height // 2
-
-                # Mueve el mouse al centro de la imagen detectada y realiza un clic
-                leftClick(center_x, center_y)
-
-                # Agrega un retraso antes de buscar otra vez la misma imagen
-                time.sleep(1)
-                #print('Click on Building')
+            for image in ExplorerBuildings:
+                ubicacion = pyautogui.locateOnScreen(image, confidence = 0.8)
+                if ubicacion != None:
+                    # Obtiene las coordenadas del centro de la imagen detectada
+                    x, y, width, height = ubicacion
+                    center_x = x + width // 2
+                    center_y = y + height // 2
+                    
+                    # Mueve el mouse al centro de la imagen detectada y realiza un clic
+                    leftClick(center_x, center_y)
+                    
+                    # Agrega un retraso antes de buscar la imagen nuevamente
+                    time.sleep(1)
+                    #print('Click on Building')
             
             # Después, Detecta el botón de explorar en las opciones del edificio
-            if pyautogui.locateOnScreen('./screenshots/Explore.jpg', confidence = 0.6) != None:
+            if pyautogui.locateOnScreen('./screenshots/Explore.jpg', confidence = 0.8) != None:
                 # Obtiene las coordenadas del centro de la imagen detectada
-                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Explore.jpg', confidence = 0.6)
+                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Explore.jpg', confidence = 0.8)
                 center_x = x + width // 2
                 center_y = y + height // 2
                 
@@ -118,16 +100,16 @@ def main():
                 # Realizamos un scroll hacia abajo para poder detectar si hay eploradores disponibles
                 pyautogui.scroll(-100) # Número negativo para desplazar hacia abajo
 
-                while pyautogui.locateOnScreen('./screenshots/Esperando.jpg', confidence = 0.6) == None \
-                    and pyautogui.locateOnScreen('./screenshots/Regresando.jpg', confidence = 0.6) == None \
-                    and pyautogui.locateOnScreen('./screenshots/Merodeando.jpg', confidence = 0.6) == None \
+                while pyautogui.locateOnScreen('./screenshots/Esperando.jpg', confidence = 0.8) == None \
+                    and pyautogui.locateOnScreen('./screenshots/Regresando.jpg', confidence = 0.8) == None \
+                    and pyautogui.locateOnScreen('./screenshots/Merodeando.jpg', confidence = 0.8) == None \
                     and keyboard.is_pressed("Esc") != True:
                     time.sleep(0.001)
 
             # Posteriormente detecta si uno de los exploradores está disponible y entra a la opción "Cuevas"
-            if pyautogui.locateOnScreen('./screenshots/Cuevas.jpg', confidence = 0.6) != None:
+            if pyautogui.locateOnScreen('./screenshots/Cuevas.jpg', confidence = 0.8) != None:
                 # Obtiene las coordenadas del centro de la imagen detectada
-                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Cuevas.jpg', confidence = 0.6)
+                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Cuevas.jpg', confidence = 0.8)
                 center_x = x + width // 2
                 center_y = y + height // 2
                 
@@ -138,9 +120,9 @@ def main():
                 time.sleep(1)
             
                 # Click en "Ir" SI un explorador está disponible
-                if pyautogui.locateOnScreen('./screenshots/Ir.jpg', confidence = 0.6) != None:
+                if pyautogui.locateOnScreen('./screenshots/Ir.jpg', confidence = 0.8) != None:
                     # Obtiene las coordenadas del centro de la imagen detectada
-                    x, y, width, height = pyautogui.locateOnScreen('./screenshots/Ir.jpg', confidence = 0.6)
+                    x, y, width, height = pyautogui.locateOnScreen('./screenshots/Ir.jpg', confidence = 0.8)
                     center_x = x + width // 2
                     center_y = (y + height // 2) + 350
                     
@@ -151,9 +133,9 @@ def main():
                     time.sleep(2)
 
             # Click en la cueva
-            if pyautogui.locateOnScreen('./screenshots/Cave.jpg', confidence = 0.6) != None:
+            if pyautogui.locateOnScreen('./screenshots/Cave.jpg', confidence = 0.8) != None:
                 # Obtiene las coordenadas del centro de la imagen detectada
-                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Cave.jpg', confidence = 0.6)
+                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Cave.jpg', confidence = 0.8)
                 center_x = x + width // 2
                 center_y = y + height // 2
                 
@@ -162,9 +144,9 @@ def main():
                 
                 # Agrega un retraso antes de buscar la imagen nuevamente
                 time.sleep(1)
-            elif pyautogui.locateOnScreen('./screenshots/Cave2.jpg', confidence = 0.6) != None:
+            elif pyautogui.locateOnScreen('./screenshots/Cave2.jpg', confidence = 0.8) != None:
                 # Obtiene las coordenadas del centro de la imagen detectada
-                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Cave2.jpg', confidence = 0.6)
+                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Cave2.jpg', confidence = 0.8)
                 center_x = x + width // 2
                 center_y = y + height // 2
                 
@@ -175,9 +157,9 @@ def main():
                 time.sleep(1)
             
             # Click en "Investigar"
-            if pyautogui.locateOnScreen('./screenshots/Investigar.jpg', confidence = 0.6) != None:
+            if pyautogui.locateOnScreen('./screenshots/Investigar.jpg', confidence = 0.8) != None:
                 # Obtiene las coordenadas del centro de la imagen detectada
-                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Investigar.jpg', confidence = 0.6)
+                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Investigar.jpg', confidence = 0.8)
                 center_x = x + width // 2
                 center_y = y + height // 2
                 
@@ -188,9 +170,9 @@ def main():
                 time.sleep(1)
 
             # Envía al explorador
-            if pyautogui.locateOnScreen('./screenshots/Enviar.jpg', confidence = 0.6) != None:
+            if pyautogui.locateOnScreen('./screenshots/Enviar.jpg', confidence = 0.8) != None:
                 # Obtiene las coordenadas del centro de la imagen detectada
-                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Enviar.jpg', confidence = 0.6)
+                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Enviar.jpg', confidence = 0.8)
                 center_x = x + width // 2
                 center_y = y + height // 2
                 
@@ -204,12 +186,12 @@ def main():
                 #print('Explorer Sent')
             
             # Vuelve a tu aldea y empieza de nuevo
-            if pyautogui.locateOnScreen('./screenshots/Back.jpg', confidence = 0.6) != None \
-                and pyautogui.locateOnScreen('./screenshots/Enviar.jpg', confidence = 0.6) == None \
-                and pyautogui.locateOnScreen('./screenshots/Available.jpg', confidence = 0.6) == None:
+            if pyautogui.locateOnScreen('./screenshots/Back.jpg', confidence = 0.8) != None \
+                and pyautogui.locateOnScreen('./screenshots/Enviar.jpg', confidence = 0.8) == None \
+                and pyautogui.locateOnScreen('./screenshots/Available.jpg', confidence = 0.8) == None:
                 
                 # Obtiene las coordenadas del centro de la imagen detectada
-                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Back.jpg', confidence = 0.6)
+                x, y, width, height = pyautogui.locateOnScreen('./screenshots/Back.jpg', confidence = 0.8)
                 center_x = x + width // 2
                 center_y = y + height // 2
                 
