@@ -1,17 +1,19 @@
 from Clicks import *
 
 def reintegrarTropas(n):
-    # Lista de posibles combinaciones de tropas
-    combinaciones = [
+    # Lista de posibles tropas curadas hasta el momento
+    posibleTroopers = [
         './screenshots/Tropas_reintegrar.jpg',
         './screenshots/Tropas_reintegrar_2.jpg',
         './screenshots/Tropas_reintegrar_3.jpg',
         './screenshots/Tropas_reintegrar_4.jpg',
         './screenshots/Tropas_reintegrar_5.jpg',
-        './screenshots/Tropas_reintegrar_6.jpg'
+        './screenshots/Tropas_reintegrar_6.jpg',
+        './screenshots/Tropas_reintegrar_7.jpg',
+        './screenshots/Tropas_reintegrar_8.jpg'
     ]
 
-    for imagen in combinaciones:
+    for imagen in posibleTroopers:
         ubicacion = pyautogui.locateOnScreen(imagen, confidence = 0.8)
         if ubicacion is not None:
             # Obtiene las coordenadas del centro de la imagen detectada

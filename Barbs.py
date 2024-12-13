@@ -71,7 +71,9 @@ def main():
                 and pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_3.jpg', confidence = 0.8) == None \
                 and pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_4.jpg', confidence = 0.8) == None \
                 and pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_5.jpg', confidence = 0.8) == None \
-                and pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_6.jpg', confidence = 0.8) == None:
+                and pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_6.jpg', confidence = 0.8) == None \
+                and pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_7.jpg', confidence = 0.8) == None \
+                and pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_8.jpg', confidence = 0.8) == None:
 
                 # Obtiene las coordenadas del centro de la imagen detectada
                 x, y, width, height = pyautogui.locateOnScreen('./screenshots/Map.jpg', confidence = 0.8)
@@ -311,6 +313,8 @@ def main():
                     or pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_4.jpg', confidence = 0.8) != None \
                     or pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_5.jpg', confidence = 0.8) != None \
                     or pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_6.jpg', confidence = 0.8) != None \
+                    or pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_7.jpg', confidence = 0.8) != None \
+                    or pyautogui.locateOnScreen('./screenshots/Tropas_reintegrar_8.jpg', confidence = 0.8) != None \
                     or pyautogui.locateOnScreen('./screenshots/Tropas_derrotadas.jpg', confidence = 0.8) != None \
                     or pyautogui.locateOnScreen('./screenshots/Tropas_regresando.jpg', confidence = 0.8) != None \
                     and keyboard.is_pressed("Esc") != True:
