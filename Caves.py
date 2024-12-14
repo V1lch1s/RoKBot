@@ -59,7 +59,10 @@ def main():
             ExplorerBuildings = [
                 './screenshots/ExplorerBuilding.jpg',
                 './screenshots/ExplorerBuilding2.jpg',
-                './screenshots/ExplorerBuilding3.jpg'
+                './screenshots/ExplorerBuilding3.jpg',
+                './screenshots/ExplorerBuilding4.jpg',
+                './screenshots/ExplorerBuilding5.jpg',
+                './screenshots/ExplorerBuilding6.jpg'
             ] # Estas son las versiones del edificio de exploración
 
             for image in ExplorerBuildings:
@@ -132,7 +135,7 @@ def main():
                     # Agrega un retraso antes de buscar la imagen nuevamente
                     time.sleep(2)
 
-            # Click en la cueva
+            '''# Click en la cueva (Redundante)
             if pyautogui.locateOnScreen('./screenshots/Cave.jpg', confidence = 0.8) != None:
                 # Obtiene las coordenadas del centro de la imagen detectada
                 x, y, width, height = pyautogui.locateOnScreen('./screenshots/Cave.jpg', confidence = 0.8)
@@ -154,7 +157,7 @@ def main():
                 leftClick(center_x, center_y)
                 
                 # Agrega un retraso antes de buscar la imagen nuevamente
-                time.sleep(1)
+                time.sleep(1)'''
             
             # Click en "Investigar"
             if pyautogui.locateOnScreen('./screenshots/Investigar.jpg', confidence = 0.8) != None:
